@@ -1,0 +1,11 @@
+#!/bin/bash
+set -x
+
+[[ $# -lt 2 ]] && { echo "Usage: $0 command file [file …]" >&2; exit 1; }
+command=$1
+shift
+files="$@"
+while :; do
+	eval "$command"
+	monitor $files
+done
