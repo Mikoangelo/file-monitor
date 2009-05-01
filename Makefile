@@ -15,3 +15,11 @@ $(EXECUTABLE): $(OBJECTS)
 
 clean:
 	@rm -vf $(OBJECTS) $(EXECUTABLE) | sed 's/^/Removed /'
+
+try: all
+	touch /tmp/monitor-test /tmp/monitor-test2
+	(./monitor /tmp/monitor-test /tmp/monitor-test2; echo "Monitor exited.") &
+	echo "Press enter to touch test file."
+	read
+	touch /tmp/monitor-test2
+	@sleep 0.5
