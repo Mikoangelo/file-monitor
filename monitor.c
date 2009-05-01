@@ -14,7 +14,7 @@ int main(int argc, char *argv[]) {
 	struct kevent event_data;
 	
 	if (argc < 2) {
-		fprintf(stderr, "Usage: %s <file_path> …\n", argv[0]);
+		fprintf(stderr, "Usage: %s <file> …\n", argv[0]);
 		return 1;
 	}
 	

@@ -1,11 +1,13 @@
 #!/bin/bash
-set -x
 
-[[ $# -lt 2 ]] && { echo "Usage: $0 command file [file …]" >&2; exit 1; }
-command=$1
-shift
-files="$@"
-while :; do
-	eval "$command"
-	monitor $files
-done
+if [[ $# -lt 2 ]]; then
+	echo "Usage: `basename $0` <command> <file> …" >&2
+else
+	command=$1
+	shift
+	files="$@"
+	while :; do
+		eval "$command"
+		monitor $files
+	done
+fi

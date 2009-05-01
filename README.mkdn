@@ -1,0 +1,34 @@
+File Monitor
+============
+
+Waits for one of a number of files to be changed, then exits. Simple as that. Mac OS X only (probably works for pretty old versions, even).
+
+Usage
+-----
+
+`monitor <file> …`
+
+To try it out, this will do:
+
+<code><pre>
+$ touch monitor-this.txt
+$ (monitor monitor-this.txt; echo "Monitor exited.") & # Run in background.
+$ # Wait a while
+$ touch monitor-this.txt
+Monitor exited.
+$
+</pre></code>
+
+It's useful particularly as the condition in a while loop around a frequent command. See below.
+
+Depend — an added bonus
+-----------------------
+
+Give depend a command to run, and touch away; the command will be repeated every time a file changes.
+
+I recommend `depend 'rake spec' spec/*` for ad-hoc spec creation.
+
+To come
+-------
+
+I hope to expand this to include directory monitoring. I may have to break into Obj-C for it. Some day it will happen, lest a kind soul lend a helping fork before then.
